@@ -103,3 +103,51 @@ Proyek Laravel ini bertujuan menyediakan RESTful API untuk mengelola pengguna, d
 - **Metode**: POST
 - **Deskripsi**: Proses bergabung dalam pertemuan.
 - **Controller**: JoinMeetingController@processJoinMeeting
+
+## Model
+
+### User Model
+
+- **Fields**:
+  - `name`
+  - `email`
+  - `password`
+  - `role`
+  - `gen`
+  - `divisi_id`
+
+- **Relationships**:
+  - `divisi`: `belongsTo(Divisi::class, 'divisi_id')`
+
+### Meeting Model
+
+- **Fields**:
+  - `name`
+  - `date`
+  - `time`
+  - `location`
+  - `author_id`
+  - `token_meeting`
+
+- **Relationships**:
+  - `author`: `belongsTo(User::class, 'author_id')`
+
+### JoinMeeting Model
+
+- **Fields**:
+  - `meeting_id`
+  - `token_meeting`
+  - `user_id`
+
+- **Relationships**:
+  - `meeting`: `belongsTo(Meeting::class, 'meeting_id')`
+  - `user`: `belongsTo(User::class, 'user_id')`
+
+### Divisi Model
+
+- **Fields**:
+  - `divisi_name`
+
+- **Relationships**:
+  - `user`: `hasMany(User::class)`
+    
