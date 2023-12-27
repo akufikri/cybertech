@@ -2,6 +2,9 @@
 
 Proyek Laravel ini bertujuan menyediakan RESTful API untuk mengelola pengguna, divisi, pertemuan, dan bergabung dalam pertemuan.
 
+## Demo Api : 
+- [ https://new-cybertech.000webhostapp.com/ ]
+
 ## Rute API
 
 ### Otentikasi
