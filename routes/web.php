@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\frontend;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [frontend\PageController::class, 'gettingStarted']);
+Route::prefix('docs')->group(function () {
+    Route::get('/auth', [frontend\PageController::class, 'apiAuth']);
+    Route::get('/division', [frontend\PageController::class, 'apiDivisi']);
+    Route::get('/meeting', [frontend\PageController::class, 'apiMeeting']);
+    Route::get('/join-meeting', [frontend\PageController::class, 'apiJoinMeeting']);
 });
+Route::get('/about', [frontend\PageController::class, 'about']);
