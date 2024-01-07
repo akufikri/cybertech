@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AbsensController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DivisiController;
 use App\Http\Controllers\JoinMeetingController;
@@ -43,3 +44,7 @@ Route::put('/meeting/update/{id}', [MeetingController::class, 'updateMeeting']);
 // join meeting
 Route::get('/join', [JoinMeetingController::class, 'getMeetingAfterJoin']);
 Route::post('/join', [JoinMeetingController::class, 'processJoinMeeting']);
+
+// absen
+Route::post('/absens', [AbsensController::class, 'create']);
+Route::get('/absens/get', [AbsensController::class, 'get']);

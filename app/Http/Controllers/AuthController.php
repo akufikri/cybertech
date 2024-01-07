@@ -15,7 +15,7 @@ class AuthController extends Controller
                 'name' => 'required|max:100',
                 'email' => 'required|email',
                 'password' => 'required',
-                'role' => 'required',
+                'role' => 'nullable',
                 'gen' => 'nullable',
                 'divisi_id' => 'nullable'
             ]);
@@ -24,13 +24,14 @@ class AuthController extends Controller
             $user->name = $request->name;
             $user->email = $request->email;
             $user->password = bcrypt($request->password);
-            $user->role = 'user';
+            $user->role = $request->role;
             $user->gen = $request->gen;
             $user->divisi_id = $request->divisi_id;
             $user->save();
 
             return response()->json([
                 'messages' => 'Successfully SignUp',
+                'data' => $user
             ], 200);
         } catch (ValidationException $e) {
             return response()->json([
@@ -53,7 +54,6 @@ class AuthController extends Controller
 
         if (auth()->attempt($credentials)) {
             $user = auth()->user();
-
             return response()->json([
                 'message' => 'Successfully signed in',
                 'user' => $user,
