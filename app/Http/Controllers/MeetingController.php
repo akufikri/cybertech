@@ -22,8 +22,9 @@ class MeetingController extends Controller
                 'date' => 'required|date',
                 'time' => 'required',
                 'location' => 'required',
-                'author_id' => 'required|exists:users,id', // Ensure author_id exists in the users table
-                'token_meeting' => 'unique:meetings,token_meeting', // Ensure token_meeting is unique in the meetings table
+                'gen' => 'required',
+                'author_id' => 'required|exists:users,id',
+                'token_meeting' => 'unique:meetings,token_meeting',
             ]);
 
             $token_meeting = substr(md5(uniqid()), 0, 5);
@@ -31,6 +32,7 @@ class MeetingController extends Controller
                 'name' => $request->input('name'),
                 'date' => $request->input('date'),
                 'time' => $request->input('time'),
+                'gen' => $request->input('time'),
                 'location' => $request->input('location'),
                 'author_id' => $request->input('author_id'),
                 'token_meeting' =>  $token_meeting
@@ -80,6 +82,7 @@ class MeetingController extends Controller
                 'date' => 'required|date',
                 'time' => 'required',
                 'location' => 'required',
+                'gen' => 'required',
                 'author_id' => 'required|exists:users,id',
             ]);
 
@@ -95,6 +98,7 @@ class MeetingController extends Controller
                 'name' => $request->input('name'),
                 'date' => $request->input('date'),
                 'time' => $request->input('time'),
+                'gen' => $request->input('time'),
                 'location' => $request->input('location'),
                 'author_id' => $request->input('author_id'),
             ]);
