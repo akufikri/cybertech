@@ -14,6 +14,7 @@ class Meeting extends Model
         'time',
         'location',
         'author_id',
+        'gen',
         'token_meeting'
     ];
 
